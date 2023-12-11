@@ -1,4 +1,4 @@
-console.log('We can do this!');
+// console.log('We can do this!');
 
 console.log('Financial Analysis');
 console.log('------------------');
@@ -112,15 +112,15 @@ console.log('Total Months:', totalMonths);
  let totalChange = 0;
  
  let averageChange = 0;
+
  let greatestIncrease = { date: '', amount: 0 }; // 
+ 
  let greatestDecrease = { date: '', amount: 0 }; 
 
 
-
-
-// Loop through the dataset to calculate financial metrics
+//The amount in the array on the right side is [1]
 for ( i = 0; i < finances.length; i++) {
-   currentData = finances[i];
+  let currentData = finances[i];
   totalProfit += currentData[1];
 
  
@@ -141,16 +141,17 @@ for ( i = 0; i < finances.length; i++) {
     // On each iteration, compare the current change in profits/losses to what's currently stored
     // If the change is more, replace what's currently stored in the variable
   
-  // The greatest decrease in Profit / Losses(date and amount) over the entire period.
-    // Need a variable for the greatest decrease
-    // On each iteration, compare the current change in profits/losses to what's currently stored
-    // If the loss is greater, replace what's currently stored in the variable
-
 
     if (change > greatestIncrease.amount) {
       greatestIncrease.date = currentData[0];
       greatestIncrease.amount = change;
     }
+
+  // The greatest decrease in Profit / Losses(date and amount) over the entire period.
+    // Need a variable for the greatest decrease
+    // On each iteration, compare the current change in profits/losses to what's currently stored
+    // If the loss is greater, replace what's currently stored in the variable
+
 
     if (change < greatestDecrease.amount) {
       greatestDecrease.date = currentData[0];
