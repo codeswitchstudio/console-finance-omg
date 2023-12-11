@@ -128,7 +128,17 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+// Your task is to write JavaScript code that analyzes the records to calculate each of the following:
+// variables:
+// total number of months
+console.log('Financial Analysis');
+console.log('------------------');
 
+var totalMonths = finances.length;
+console.log(`Total Months: ${totalMonths}`);
+
+// The net total amount of Profit / Losses over the entire period.
+  // Need a variable for Profits/Losses
 
 
 
