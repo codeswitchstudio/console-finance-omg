@@ -135,7 +135,6 @@ for ( i = 0; i < finances.length; i++) {
     let change = currentData[1] - finances[i - 1][1];
     totalChange += change;
 
-    console.log('Total: £' + totalProfit);
 
     // The greatest increase in Profit / Losses(date and amount) over the entire period.
     // Need a variable for the greatest increase
@@ -165,10 +164,7 @@ averageChange = totalChange / (totalMonths - 1);
 
 // Display the results, instructor says I may use £ instead of $
 
-
-
-
-
+console.log('Total: £' + totalProfit);
 console.log('Average Change: £' + averageChange.toFixed(2));
 console.log('Greatest Increase in Profits/Losses:', greatestIncrease.date, '(£' + greatestIncrease.amount + ')');
 console.log('Greatest Decrease in Profits/Losses:', greatestDecrease.date, '(£' + greatestDecrease.amount + ')');
