@@ -96,14 +96,15 @@ var finances = [
 // Your task is to write JavaScript code that analyzes the records to calculate each of the following:
 // The total number of months included in the dataset.
 
-let totalMonths = finances.length;
+let totalMonths = finances.length; // length of the array
+console.log('Total Months:', totalMonths);
 
 // The net total amount of Profit / Losses over the entire period.
   // Need a variable for Profits/Losses
   // Need to be able to compare the data for the loop that we're on to the data from the previous loop
     // Need variables for current & previous once we start the loop
     // Need an if statement to make sure we're on at least month 2 (array index 1) before starting to figure profits & losses
-console.log('Total Months:', totalMonths);
+
 
 //variables
 
@@ -113,14 +114,14 @@ console.log('Total Months:', totalMonths);
  
  let averageChange = 0;
 
- let greatestIncrease = { date: '', amount: 0 }; // 
+ let greatestIncrease = { date: '', amount: 0 }; //Aldo helped me here but I don't understand this
  
  let greatestDecrease = { date: '', amount: 0 }; 
 
 
 //The amount in the array on the right side is [1]
 for ( i = 0; i < finances.length; i++) {
-  let currentData = finances[i];
+  let currentData = finances[i]; //currentData is one row of the datea and amt
   totalProfit += currentData[1];
 
  
@@ -131,7 +132,7 @@ for ( i = 0; i < finances.length; i++) {
 // (Total / (Number of months - 1))
 
   if (i > 0) {
-    // Calculate change in Profit/Loss
+    // /here is the change in Profit/Loss
     let change = currentData[1] - finances[i - 1][1];
     totalChange += change;
 
@@ -160,12 +161,17 @@ for ( i = 0; i < finances.length; i++) {
   }
 }
 
-// Calculate average change
+//average change
 averageChange = totalChange / (totalMonths - 1);
 
 // Display the results, instructor says I may use £ instead of $
 
 console.log('Total: £' + totalProfit);
+
 console.log('Average Change: £' + averageChange.toFixed(2));
+
 console.log('Greatest Increase in Profits/Losses:', greatestIncrease.date, '(£' + greatestIncrease.amount + ')');
+
 console.log('Greatest Decrease in Profits/Losses:', greatestDecrease.date, '(£' + greatestDecrease.amount + ')');
+
+//omg
