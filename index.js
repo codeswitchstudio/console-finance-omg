@@ -1,4 +1,7 @@
-// console.log('Tuesday!');
+console.log('We can do this!');
+
+console.log('Financial Analysis');
+console.log('------------------');
 
 var finances = [
   ['Jan-2010', 867884],
@@ -89,54 +92,83 @@ var finances = [
   ['Feb-2017', 671099],
 ];
 
+
 // Your task is to write JavaScript code that analyzes the records to calculate each of the following:
-// variables:
-// total number of months
-console.log('Financial Analysis');
-console.log('------------------');
+// The total number of months included in the dataset.
 
-var totalMonths = finances.length;
-console.log(`Total Months: ${totalMonths}`);
+let totalMonths = finances.length;
 
 // The net total amount of Profit / Losses over the entire period.
   // Need a variable for Profits/Losses
+  // Need to be able to compare the data for the loop that we're on to the data from the previous loop
+    // Need variables for current & previous once we start the loop
+    // Need an if statement to make sure we're on at least month 2 (array index 1) before starting to figure profits & losses
+console.log('Total Months:', totalMonths);
 
-// The net total amount of Profit / Losses over the entire period.
-  // Need a variable for Profits/Losses
+//variables
 
-  var totalProfit = 0;
+ let totalProfit = 0;
 
-  // Calculate the number part of the array
-    // Need to be able to compare the data for the loop that we're on to the data from the previous loop
-  for (var i = 0; i < finances.length; i++) {
-  
-   // Need variables for current & previous once we start the loop
-    var currentFieldDate = finances[i];
-  
-    var previousFieldDate = i > 0 ? finances[i - 1] : null;
-  
+ let totalChange = 0;
+ 
+ let averageChange = 0;
+ let greatestIncrease = { date: '', amount: 0 }; // 
+ let greatestDecrease = { date: '', amount: 0 }; 
 
-    // Calculate total profit/loss
-  totalProfit += currentFieldDate[1];
-  
-  console.log('Total Profit/Loss:', totalProfit);
+
+
+
+// Loop through the dataset to calculate financial metrics
+for ( i = 0; i < finances.length; i++) {
+   currentData = finances[i];
+  totalProfit += currentData[1];
 
  
-    // Need an if statement to make sure we're on at least month 2 (array index 1) before starting to figure profits & losses
-
-// The average of the changes in Profit / Losses over the entire period.
+ // The average of the changes in Profit / Losses over the entire period.
   // Need a variable to track the average change
   // That will make use of the current & previous variables we set up before
 // You will need to track what the total change in Profit / Losses are from month to month and then find the average.
 // (Total / (Number of months - 1))
 
-// The greatest increase in Profit / Losses(date and amount) over the entire period.
-  // Need a variable for the greatest increase
-  // On each iteration, compare the current change in profits/losses to what's currently stored
-  // If the change is more, replace what's currently stored in the variable
+  if (i > 0) {
+    // Calculate change in Profit/Loss
+    let change = currentData[1] - finances[i - 1][1];
+    totalChange += change;
 
-// The greatest decrease in Profit / Losses(date and amount) over the entire period.
-  // Need a variable for the greatest decrease
-  // On each iteration, compare the current change in profits/losses to what's currently stored
-  // If the loss is greater, replace what's currently stored in the variable
+    console.log('Total: £' + totalProfit);
+
+    // The greatest increase in Profit / Losses(date and amount) over the entire period.
+    // Need a variable for the greatest increase
+    // On each iteration, compare the current change in profits/losses to what's currently stored
+    // If the change is more, replace what's currently stored in the variable
+  
+  // The greatest decrease in Profit / Losses(date and amount) over the entire period.
+    // Need a variable for the greatest decrease
+    // On each iteration, compare the current change in profits/losses to what's currently stored
+    // If the loss is greater, replace what's currently stored in the variable
+
+
+    if (change > greatestIncrease.amount) {
+      greatestIncrease.date = currentData[0];
+      greatestIncrease.amount = change;
+    }
+
+    if (change < greatestDecrease.amount) {
+      greatestDecrease.date = currentData[0];
+      greatestDecrease.amount = change;
+    }
+  }
 }
+
+// Calculate average change
+averageChange = totalChange / (totalMonths - 1);
+
+// Display the results, instructor says I may use £ instead of $
+
+
+
+
+
+console.log('Average Change: £' + averageChange.toFixed(2));
+console.log('Greatest Increase in Profits/Losses:', greatestIncrease.date, '(£' + greatestIncrease.amount + ')');
+console.log('Greatest Decrease in Profits/Losses:', greatestDecrease.date, '(£' + greatestDecrease.amount + ')');
